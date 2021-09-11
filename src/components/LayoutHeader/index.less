@@ -1,0 +1,60 @@
+.header {
+  height: 48px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+  z-index: 100;
+}
+
+.layout-header {
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.85);
+
+  .header-left {
+    font-size: 24px;
+    width: 50%;
+    .breadcrumb {
+      line-height: 48px;
+    }
+    .ant-breadcrumb-separator {
+      margin: 0 4px;
+      color: rgba(0, 0, 0, 0.85);
+    }
+    .ant-breadcrumb a{
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    width: 50%;
+    padding-right: 24px;
+
+    .intl {
+      margin-right: 24px;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-right: 24px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .avatar {
+      cursor: pointer;
+    }
+
+    .name {
+      margin-left: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+}
