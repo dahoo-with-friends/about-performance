@@ -7,8 +7,12 @@ const menu = [
     name: '2',
     content: [
       {
-        path: '/customMonitor',
-        name: '自定义监控',
+        path: '/memory',
+        name: '内存测试',
+      },
+      {
+        path: '/context',
+        name: 'context',
       },
     ],
   },

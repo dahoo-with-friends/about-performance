@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-    />
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.bybit.com/trade/inverse/favicon.ico">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1457423_f685qqizen.css" />
-    <title>性能测试</title>
-  </head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-    <script>
-      window.global = window;
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.bybit.com/trade/inverse/favicon.ico">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1457423_f685qqizen.css" />
+  <title>性能测试</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- async和defer不同之处是async加载完成后会自动执行脚本，defer加载完成后需要等待页面也加载完成才会执行代码 -->
+  <script type="module" src="" id="lazyJS"></script>
+  <!-- <script type="module" src="/src/index.tsx" id="lazyJS2"></script> -->
+  <script type="module">
+    window.global = window;
+    // lazyJS.src = '/src/index.tsx'
+    // document.write("<script type='module' src='/src/index.tsx'><\/script>");
+
+    function loadJS(url, callback,async=true) {
+      var script = document.createElement('script'),
+        fn = callback || function () { };
+      script.type = 'module';
+      script.onload = function () {
+        fn();
+      };
+      script.src = url;
+      script.async = async === undefined ? true : async;
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    
+    import {getQueryString} from './src/utils/index'
+    if(getQueryString().clear){
+      loadJS('/src/ClearApp.ts')
+    }else{
+      loadJS('/src/index.tsx')
+    }
+
+  </script>
+</body>
+
 </html>
