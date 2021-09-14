@@ -15,6 +15,11 @@ export const ThemeContext = React.createContext({
     toggleTheme: () => { }
 });
 
+export const ThemeContext2 = React.createContext({
+    themes: themes.dark, // 默认值
+    toggleTheme: () => { }
+});
+
 export const UserContext = React.createContext({
   name: 'Guest',
 });
